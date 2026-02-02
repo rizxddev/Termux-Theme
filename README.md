@@ -16,7 +16,7 @@ One-command installation for a complete Termux theme with custom prompt, colors,
 git clone https://github.com/rizxddev/Termux-Theme.git
 cd Termux-Theme
 bash install.sh
-
+```
 ## All In One Command
 ```
 git clone https://github.com/rizxddev/Termux-Theme.git ~/Termux-Theme && cd ~/Termux-Theme && bash install.sh
