@@ -1,7 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # ============================================
-# TERMUX PRO THEME - RIZXMODS (FIXED VERSION)
+# TERMUX PRO THEME CLEAN - RIZXMODS
+# Clean version without ASCII art issues
 # ============================================
 
 RED='\033[1;31m'
@@ -13,43 +14,25 @@ CYAN='\033[1;36m'
 WHITE='\033[1;37m'
 NC='\033[0m'
 
-# Banner
-show_banner() {
-    clear
-    echo -e "${CYAN}"
-    cat << "EOF"
-    ╔═══════════════════════════════════════════════╗
-    ║        ██████╗ ██████╗  ██████╗               ║
-    ║        ██╔══██╗██╔══██╗██╔═══██╗              ║
-    ║        ██████╔╝██████╔╝██║   ██║              ║
-    ║        ██╔═══╝ ██╔══██╗██║   ██║              ║
-    ║        ██║     ██║  ██║╚██████╔╝              ║
-    ║        ╚═╝     ╚═╝  ╚═╝ ╚═════╝               ║
-    ║                                               ║
-    ║         T E R M U X   P R O   T H E M E       ║
-    ║            RIZXMODS EDITION v2.0              ║
-    ╚═══════════════════════════════════════════════╝
+echo -e "${CYAN}"
+cat << "EOF"
+╔═══════════════════════════════════════════╗
+║        TERMUX PRO THEME - CLEAN          ║
+║         RIZXMODS EDITION v2.1            ║
+╚═══════════════════════════════════════════╝
 EOF
-    echo -e "${NC}"
-}
+echo -e "${NC}"
 
-show_banner
-
-echo -e "${YELLOW}[+] Installing PRO Theme (Fixed Version)...${NC}"
+echo -e "${YELLOW}[+] Installing PRO Theme (Clean Version)...${NC}"
 echo ""
 
 # Update & install
-echo -e "${BLUE}[1] Updating system...${NC}"
 pkg update -y && pkg upgrade -y
+pkg install -y zsh
 
-echo -e "${BLUE}[2] Installing packages...${NC}"
-pkg install -y zsh git wget curl neofetch figlet
-
-# Cyberpunk Colors
-echo -e "${BLUE}[3] Applying Cyberpunk colors...${NC}"
+# Colors
 mkdir -p ~/.termux
 cat > ~/.termux/colors.properties << 'EOF'
-# Cyberpunk PRO Theme
 background=#0a0a0a
 foreground=#00ff9f
 cursor=#ff0055
@@ -61,234 +44,185 @@ color4=#00a3ff
 color5=#cc00ff
 color6=#00ffff
 color7=#c0c0c0
-color8=#4d4d4d
-color9=#ff5580
-color10=#33ffb3
-color11=#ffdd44
-color12=#66c2ff
-color13=#dd66ff
-color14=#66ffff
-color15=#ffffff
 EOF
 
-# PRO ZSH Config (FIXED VERSION)
-echo -e "${BLUE}[4] Creating PRO configuration (Fixed)...${NC}"
-cat > ~/.zshrc << "EOF"
+# Clean ZSH Config (NO ASCII ART)
+cat > ~/.zshrc << 'EOF'
 # ================================================
-# RIZXMODS PRO TERMUX THEME v2.0 (FIXED)
+# RIZXMODS PRO THEME - CLEAN VERSION
 # ================================================
 
-# Enable colors
 autoload -U colors && colors
 
-# Set color variables
-CYBER_GREEN="%F{46}"
-CYBER_PINK="%F{199}"
-CYBER_BLUE="%F{39}"
-CYBER_YELLOW="%F{226}"
-CYBER_CYAN="%F{51}"
+# Color Variables
+GREEN="%F{46}"
+PINK="%F{199}"
+BLUE="%F{39}"
+YELLOW="%F{226}"
+CYAN="%F{51}"
 WHITE="%F{255}"
 RESET="%f"
 
-# Welcome Banner - FIXED: gunakan print/echo dengan flag -P
-welcome_banner() {
+# Simple Welcome
+welcome() {
     clear
-    print -P "%F{46}"
-    print '╔═══╗╔═══╗╔╗ ╔╗╔═══╗╔═══╗╔═══╗╔═══╗'
-    print '║╔═╗║║╔══╝║║ ║║║╔══╝║╔═╗║║╔═╗║║╔═╗║'
-    print '║╚═╝║║╚══╗║║ ║║║╚══╗║╚═╝║║╚═╝║║╚══╗'
-    print '║╔╗╔╝║╔══╝║║ ║║║╔══╝║╔╗╔╝║╔╗╔╝╚══╗║'
-    print '║║║╚╗║╚══╗║╚═╝║║╚══╗║║║╚╗║║║╚╗║╚═╝║'
-    print '╚╝╚═╝╚═══╝╚═══╝╚═══╝╚╝╚═╝╚╝╚═╝╚═══╝'
-    print "%f"
-    print -P "{39}╔═══════════════════════════════════════╗"
+    print -P "${BLUE}╔═══════════════════════════════════════╗"
     print "║      TERMUX PRO THEME - RIZXMODS      ║"
-    print "║              Version 2.0              ║"
-    print "╚═══════════════════════════════════════╝"
+    print "║              Version 2.1              ║"
+    print "╚═══════════════════════════════════════╝${RESET}"
     print ""
 }
 
-# System Info - FIXED: gunakan print -P untuk warna ZSH
+# System Info
 sys_info() {
-    print -P "%F{39}┌───────────────── SYSTEM INFO ─────────────────┐%f"
-    print -P "%F{255}│%f %F{226}» OS:%f %F{255}$(uname -o)%f"
-    print -P "%F{255}│%f %F{226}» Kernel:%f %F{255}$(uname -r)%f"
-    print -P "%F{255}│%f %F{226}» Shell:%f %F{255}ZSH PRO%f"
-    print -P "%F{255}│%f %F{226}» User:%f %F{199}@rizxdev%f"
-    print -P "%F{255}│%f %F{226}» Theme:%f %F{46}Cyberpunk Edition%f"
-    print -P "%F{39}└────────────────────────────────────────────────┘%f"
-}
-
-# Git Status
-git_status_info() {
-    if git rev-parse --git-dir > /dev/null 2>&1; then
-        local BRANCH=$(git branch --show-current 2>/dev/null)
-        if [ -n "$BRANCH" ]; then
-            print -P "%F{46}[⎇ $BRANCH]%f"
-        fi
+    print -P "${BLUE}┌───────────────── SYSTEM INFO ─────────────────┐${RESET}"
+    print -P "${WHITE}│${RESET} ${YELLOW}» OS:${RESET} ${WHITE}$(uname -o)${RESET}"
+    
+    # Trim kernel version if too long
+    local KERNEL=$(uname -r)
+    if [ ${#KERNEL} -gt 40 ]; then
+        KERNEL="${KERNEL:0:37}..."
     fi
+    print -P "${WHITE}│${RESET} ${YELLOW}» Kernel:${RESET} ${WHITE}$KERNEL${RESET}"
+    print -P "${WHITE}│${RESET} ${YELLOW}» Shell:${RESET} ${WHITE}ZSH ${ZSH_VERSION}${RESET}"
+    print -P "${WHITE}│${RESET} ${YELLOW}» User:${RESET} ${PINK}@rizxdev${RESET}"
+    print -P "${WHITE}│${RESET} ${YELLOW}» Theme:${RESET} ${GREEN}Cyberpunk Edition${RESET}"
+    print -P "${BLUE}└────────────────────────────────────────────────┘${RESET}"
 }
 
-# Dynamic Prompt - FIXED: gunakan single quotes untuk PROMPT
+# Prompt
 precmd() {
     local EXIT_CODE=$?
     
     if [ $EXIT_CODE -eq 0 ]; then
-        STATUS="%F{46}✔%f"
+        STATUS="${GREEN}✔${RESET}"
     else
-        STATUS="%F{199}✘%f"
+        STATUS="${PINK}✘${RESET}"
     fi
     
-    local CURRENT_TIME=$(date +"%H:%M:%S")
-    local CURRENT_DIR=$(print -P "%~")
+    local TIME=$(date +"%H:%M:%S")
+    local DIR=$(print -P "%~")
     
-    # Trim long directory names
-    if [ ${#CURRENT_DIR} -gt 25 ]; then
-        CURRENT_DIR="...${CURRENT_DIR: -22}"
+    # Trim directory if too long
+    if [ ${#DIR} -gt 20 ]; then
+        DIR="...${DIR: -17}"
     fi
     
-    # Build prompt line by line
-    PROMPT="%F{39}╭─%f[${STATUS}]%F{39}──%f[%F{199}@rizxdev%f]%F{39}──%f[%F{226}${CURRENT_DIR}%f]"
+    # Build prompt
+    PROMPT="${BLUE}╭─${RESET}[${STATUS}]${BLUE}──${RESET}[${PINK}@rizxdev${RESET}]${BLUE}──${RESET}[${YELLOW}${DIR}${RESET}]"
     
-    # Add Git info if available
-    local GIT_INFO=$(git_status_info)
-    if [ -n "$GIT_INFO" ]; then
-        PROMPT+=" ${GIT_INFO}"
+    # Git info
+    if git rev-parse --git-dir > /dev/null 2>&1; then
+        local BRANCH=$(git branch --show-current 2>/dev/null)
+        if [ -n "$BRANCH" ]; then
+            PROMPT+=" ${GREEN}[⎇ $BRANCH]${RESET}"
+        fi
     fi
     
     PROMPT+="
-%F{39}╰─%f[%F{51}${CURRENT_TIME}%f]%F{39}───╼%f %F{199}⟫%F{226}⟫%F{46}⟫%f "
+${BLUE}╰─${RESET}[${CYAN}${TIME}${RESET}]${BLUE}───╼${RESET} ${PINK}⟩${YELLOW}⟩${GREEN}⟩${RESET} "
 }
 
 setopt prompt_subst
 
 # ================================================
-# ALIASES & FUNCTIONS
+# ALIASES
 # ================================================
 
-# Navigation
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias ~="cd ~"
-alias home="cd ~"
-
-# Listing
-alias ls="ls --color=auto -F"
-alias ll="ls -lah"
-alias la="ls -A"
-alias l="ls -CF"
-
-# System
-alias update="pkg update && pkg upgrade -y"
-alias install="pkg install -y"
-alias remove="pkg uninstall"
-alias clean="pkg clean"
+alias ls='ls --color=auto'
+alias ll='ls -la'
+alias la='ls -a'
+alias cl='clear'
+alias update='pkg update && pkg upgrade -y'
+alias install='pkg install -y'
 
 # Git
-alias gs="git status"
-alias ga="git add"
-alias gc="git commit -m"
-alias gp="git push"
-alias gl="git log --oneline --graph --all"
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit -m'
+alias gp='git push'
 
-# Theme Management
+# Theme commands
 theme-help() {
-    print -P "%F{39}┌─────────────── THEME COMMANDS ───────────────┐%f"
-    print -P "%F{255}│%f %F{46}theme-help%f      - Show this help"
-    print -P "%F{255}│%f %F{46}sys-info%f        - System information"
-    print -P "%F{255}│%f %F{46}prompt-demo%f     - Show prompt examples"
-    print -P "%F{255}│%f %F{46}change-user%f     - Change username"
-    print -P "%F{255}│%f %F{46}color-show%f      - Display color palette"
-    print -P "%F{39}└────────────────────────────────────────────────┘%f"
+    print -P "${BLUE}┌─────────────── THEME COMMANDS ───────────────┐${RESET}"
+    print -P "${WHITE}│${RESET} ${GREEN}theme-help${RESET}      - Show this help"
+    print -P "${WHITE}│${RESET} ${GREEN}sys-info${RESET}        - System information"
+    print -P "${WHITE}│${RESET} ${GREEN}prompt-demo${RESET}     - Show prompt examples"
+    print -P "${WHITE}│${RESET} ${GREEN}change-user${RESET}     - Change username"
+    print -P "${WHITE}│${RESET} ${GREEN}color-test${RESET}      - Test colors"
+    print -P "${BLUE}└────────────────────────────────────────────────┘${RESET}"
 }
 
 sys-info() {
-    welcome_banner
+    welcome
     sys_info
-    print ""
 }
 
 prompt-demo() {
-    print -P "%F{39}┌────────────── PROMPT EXAMPLES ───────────────┐%f"
-    print -P "%F{255}│%f %F{46}Success:%f"
-    print -P "%F{255}│%f %F{39}╭─%f[%F{46}✔%f]%F{39}──%f[%F{199}@rizxdev%f]%F{39}──%f[%F{226}~/projects%f] %F{46}[⎇ main]%f"
-    print -P "%F{255}│%f %F{39}╰─%f[%F{51}14:30:22%f]%F{39}───╼%f %F{199}⟫%F{226}⟫%F{46}⟫%f"
-    print -P "%F{255}│%f"
-    print -P "%F{255}│%f %F{199}Error:%f"
-    print -P "%F{255}│%f %F{39}╭─%f[%F{199}✘%f]%F{39}──%f[%F{199}@rizxdev%f]%F{39}──%f[%F{226}~/projects%f]"
-    print -P "%F{255}│%f %F{39}╰─%f[%F{51}14:30:22%f]%F{39}───╼%f %F{199}⟫%F{226}⟫%F{46}⟫%f"
-    print -P "%F{39}└────────────────────────────────────────────────┘%f"
+    print -P "${BLUE}┌────────────── PROMPT EXAMPLES ───────────────┐${RESET}"
+    print -P "${WHITE}│${RESET} ${BLUE}╭─${RESET}[${GREEN}✔${RESET}]${BLUE}──${RESET}[${PINK}@rizxdev${RESET}]${BLUE}──${RESET}[${YELLOW}~/projects${RESET}]"
+    print -P "${WHITE}│${RESET} ${BLUE}╰─${RESET}[${CYAN}14:30:22${RESET}]${BLUE}───╼${RESET} ${PINK}⟩${YELLOW}⟩${GREEN}⟩${RESET}"
+    print -P "${BLUE}└────────────────────────────────────────────────┘${RESET}"
 }
 
 change-user() {
     if [ -z "$1" ]; then
-        print -P "%F{199}Usage: change-user <username>%f"
+        print -P "${PINK}Usage: change-user <username>${RESET}"
         return 1
     fi
     sed -i "s/@rizxdev/@$1/g" ~/.zshrc
     source ~/.zshrc
-    print -P "%F{46}Username changed to @$1%f"
+    print -P "${GREEN}Username changed to @$1${RESET}"
 }
 
-color-show() {
-    print -P "%F{39}┌────────────── COLOR PALETTE ────────────────┐%f"
-    print -P "%F{255}│%f %F{46}Cyber Green%f  %F{199}Cyber Pink%f  %F{39}Cyber Blue%f"
-    print -P "%F{255}│%f %F{226}Cyber Yellow%f %F{51}Cyber Cyan%f  %F{255}White%f"
-    print -P "%F{39}└────────────────────────────────────────────────┘%f"
+color-test() {
+    print -P "${BLUE}┌────────────── COLOR TEST ────────────────┐${RESET}"
+    print -P "${WHITE}│${RESET} ${GREEN}Green${RESET}   ${PINK}Pink${RESET}   ${BLUE}Blue${RESET}"
+    print -P "${WHITE}│${RESET} ${YELLOW}Yellow${RESET}  ${CYAN}Cyan${RESET}   ${WHITE}White${RESET}"
+    print -P "${BLUE}└──────────────────────────────────────────┘${RESET}"
 }
 
 # ================================================
 # STARTUP
 # ================================================
 
-# Show welcome
-welcome_banner
+welcome
 sys_info
 
 print ""
-print -P "%F{46}✓ PRO Theme activated successfully!%f"
-print -P "%F{226}Type 'theme-help' for custom commands%f"
-print -P "%F{39}══════════════════════════════════════════════%f"
+print -P "${GREEN}✓ PRO Theme activated successfully!${RESET}"
+print -P "${YELLOW}Type 'theme-help' for custom commands${RESET}"
+print -P "${BLUE}══════════════════════════════════════════════${RESET}"
 print ""
 
-# History settings
+# History
 HISTFILE=~/.zsh_history
-HISTSIZE=5000
-SAVEHIST=5000
+HISTSIZE=1000
+SAVEHIST=1000
 setopt appendhistory
-setopt sharehistory
 
 # Completion
 autoload -Uz compinit
 compinit
-zstyle ':completion:*' menu select
 
 # Key bindings
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
-bindkey "^[[3~" delete-char
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
 
 # Options
 setopt autocd
-setopt extendedglob
 setopt nobeep
 
-# Final
-print -P "%F{46}Ready for commands...%f"
+print -P "${GREEN}Ready for commands...${RESET}"
 EOF
 
 # Set ZSH as default
-echo -e "${BLUE}[5] Setting ZSH as default shell...${NC}"
 chsh -s zsh
 
 # Create bash fallback
-echo -e "${BLUE}[6] Creating bash configuration...${NC}"
 cat > ~/.bashrc << 'EOF'
-# Bash fallback for PRO Theme
-PS1='\[\033[1;34m\]╭─\[\033[0m\][\[\033[1;31m\]$?\[\033[0m\]]\[\033[1;34m\]──\[\033[0m\][\[\033[1;35m\]@rizxdev\[\033[0m\]]\[\033[1;34m\]──\[\033[0m\][\[\033[1;33m\]\w\[\033[0m\]]\n\[\033[1;34m\]╰─\[\033[0m\][\[\033[1;36m\]\t\[\033[0m\]]\[\033[1;34m\]───╼\[\033[0m\] \[\033[1;31m\]⟫\[\033[1;33m\]⟫\[\033[1;32m\]⟫\[\033[0m\] '
+# Bash fallback
+PS1='\[\033[1;34m\]╭─\[\033[0m\][\[\033[1;31m\]$?\[\033[0m\]]\[\033[1;34m\]──\[\033[0m\][\[\033[1;35m\]@rizxdev\[\033[0m\]]\[\033[1;34m\]──\[\033[0m\][\[\033[1;33m\]\w\[\033[0m\]]\n\[\033[1;34m\]╰─\[\033[0m\][\[\033[1;36m\]\t\[\033[0m\]]\[\033[1;34m\]───╼\[\033[0m\] \[\033[1;31m\]⟩\[\033[1;33m\]⟩\[\033[1;32m\]⟩\[\033[0m\] '
 
 alias ls='ls --color=auto'
 alias ll='ls -la'
@@ -298,7 +232,7 @@ clear
 echo ""
 echo -e "\033[1;34m╔══════════════════════════════════════╗"
 echo -e "║      PRO THEME - BASH MODE          ║"
-echo -e "║      Type 'zsh' for full PRO        ║"
+echo -e "║      Type 'zsh' for full theme      ║"
 echo -e "╚══════════════════════════════════════╝\033[0m"
 echo ""
 EOF
@@ -306,34 +240,28 @@ EOF
 # Reload
 termux-reload-settings
 
-# Final message
+# Final
 echo -e "${GREEN}"
 cat << "EOF"
-╔═══════════════════════════════════════════╗
-║         PRO THEME INSTALLED!             ║
-╠═══════════════════════════════════════════╣
-║  ✓ Cyberpunk Color Scheme                ║
-║  ✓ Multi-line Prompt (Fixed)             ║
-║  ✓ Git Integration                       ║
-║  ✓ System Info Display                   ║
-║  ✓ Custom Theme Commands                 ║
-║  ✓ Auto-completion                       ║
-╚═══════════════════════════════════════════╝
+╔═══════════════════════════════════════╗
+║         PRO THEME INSTALLED!         ║
+╠═══════════════════════════════════════╣
+║  ✓ Clean Cyberpunk Colors            ║
+║  ✓ Multi-line Prompt                 ║
+║  ✓ Git Integration                   ║
+║  ✓ System Info                       ║
+║  ✓ Custom Commands                   ║
+╚═══════════════════════════════════════╝
 EOF
 echo -e "${NC}"
 
 echo ""
-echo -e "${YELLOW}Your prompt now looks like:${NC}"
+echo -e "${YELLOW}Sample prompt:${NC}"
 echo ""
 echo -e "  ${BLUE}╭─${NC}[${GREEN}✔${NC}]${BLUE}──${NC}[${MAGENTA}@rizxdev${NC}]${BLUE}──${NC}[${YELLOW}~${NC}]"
-echo -e "  ${BLUE}╰─${NC}[${CYAN}14:30:22${NC}]${BLUE}───╼${NC} ${RED}⟫${YELLOW}⟫${GREEN}⟫${NC} "
+echo -e "  ${BLUE}╰─${NC}[${CYAN}14:30:22${NC}]${BLUE}───╼${NC} ${RED}⟩${YELLOW}⟩${GREEN}⟩${NC} "
 echo ""
-echo -e "${CYAN}Quick commands:${NC}"
-echo "  theme-help      - Show all commands"
-echo "  sys-info        - System information"
-echo "  prompt-demo     - Prompt examples"
-echo "  change-user abc - Change username"
+echo -e "${CYAN}Commands: theme-help, sys-info, prompt-demo${NC}"
 echo ""
-echo -e "${YELLOW}Starting ZSH in 3 seconds...${NC}"
-sleep 3
+sleep 2
 exec zsh
