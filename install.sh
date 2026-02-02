@@ -12,7 +12,7 @@ clear
 echo -e "${CYAN}"
 cat << "EOF"
 ╔══════════════════════════════════════╗
-║    TERMUX THEME - RIZXMODS    ║
+║       TERMUX THEME - RIZXMODS       ║
 ╚══════════════════════════════════════╝
 EOF
 echo -e "${NC}"
