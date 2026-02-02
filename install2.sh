@@ -17,8 +17,8 @@ NC='\033[0m'
 echo -e "${CYAN}"
 cat << "EOF"
 ╔═══════════════════════════════════════════╗
-║        TERMUX PRO THEME - CLEAN          ║
-║         RIZXMODS EDITION v2.1            ║
+║        TERMUX PRO THEME - CLEAN           ║
+║         RIZXMODS EDITION v2.1             ║
 ╚═══════════════════════════════════════════╝
 EOF
 echo -e "${NC}"
@@ -244,13 +244,13 @@ termux-reload-settings
 echo -e "${GREEN}"
 cat << "EOF"
 ╔═══════════════════════════════════════╗
-║         PRO THEME INSTALLED!         ║
+║         PRO THEME INSTALLED!          ║
 ╠═══════════════════════════════════════╣
-║  ✓ Clean Cyberpunk Colors            ║
-║  ✓ Multi-line Prompt                 ║
-║  ✓ Git Integration                   ║
-║  ✓ System Info                       ║
-║  ✓ Custom Commands                   ║
+║  ✓ Clean Cyberpunk Colors             ║
+║  ✓ Multi-line Prompt                  ║
+║  ✓ Git Integration                    ║
+║  ✓ System Info                        ║
+║  ✓ Custom Commands                    ║
 ╚═══════════════════════════════════════╝
 EOF
 echo -e "${NC}"
