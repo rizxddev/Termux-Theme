@@ -19,4 +19,4 @@ bash install.sh
 ```
 ## All In One Command
 ```
-git clone https://github.com/rizxddev/Termux-Theme.git ~/Termux-Theme && cd ~/Termux-Theme && bash install.sh
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/rizxddev/Termux-Theme/main/install.sh)"
