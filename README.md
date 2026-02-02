@@ -11,12 +11,13 @@ One-command installation for a complete Termux theme with custom prompt, colors,
 - 🔧 Useful aliases & functions
 - 🎯 Git integration
 
-## Installation
-```bash
-git clone https://github.com/rizxddev/Termux-Theme.git
-cd Termux-Theme
-bash install.sh
-```
+
 ## All In One Command
+THEME 1
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/rizxddev/Termux-Theme/main/install.sh)"
+
+```
+THEME 2
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/rizxddev/Termux-Theme/main/install2.sh)"
