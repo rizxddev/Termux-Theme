@@ -5,7 +5,7 @@ One-command installation for a complete Termux theme with custom prompt, colors,
 ## Features
 - 🎨 Dracula Color Scheme
 - 🔤 Hack Nerd Font
-- 🖥️ Custom Prompt: `┌─[✗]─[@rizxmods]─[~]`
+- 🖥️ Custom Prompt
 - ⚡ Dynamic status indicator (✓/✗)
 - 🚀 ZSH with plugins
 - 🔧 Useful aliases & functions
@@ -13,9 +13,10 @@ One-command installation for a complete Termux theme with custom prompt, colors,
 
 ## Installation
 ```bash
-git clone https://github.com/yourusername/termux-theme-rizxmods.git
-cd termux-theme-rizxmods
+git clone https://github.com/rizxddev/Termux-Theme.git
+cd Termux-Theme
 bash install.sh
 
 ## All In One Command
-git clone https://github.com/yourusername/termux-theme-rizxmods.git ~/termux-theme && cd ~/termux-theme && bash install.sh
+```
+git clone https://github.com/rizxddev/Termux-Theme.git ~/Termux-Theme && cd ~/Termux-Theme && bash install.sh
